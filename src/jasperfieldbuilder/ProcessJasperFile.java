@@ -66,15 +66,15 @@ public class ProcessJasperFile extends JFrame {
 				{ TableLayout.FILL, 2, 100,100, 2 }, // X
 				{ TableLayout.PREFERRED, TableLayout.FILL, 50, 25, 25, 5, 25, 25, 25, 25, 50 } // Y
 			};
-		JFrame hauptframe = new JFrame();
-		hauptframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		hauptframe.setLayout(new TableLayout(size));
-		hauptframe.setTitle(ProcessConstants.PROGRAM_TITLE);
+		JFrame mainframe = new JFrame();
+		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainframe.setLayout(new TableLayout(size));
+		mainframe.setTitle(ProcessConstants.PROGRAM_TITLE);
 
 		// Set icon
 		try {
 			BufferedImage frameIcon = ImageIO.read(ProcessJasperFile.class.getResource("/img/Settings_gears_64.png"));
-			hauptframe.setIconImage(frameIcon);
+			mainframe.setIconImage(frameIcon);
 		} catch (IOException e) {
 			PJFLogger logger = (PJFLogger) PJFLogger.getLogger(PJFLogger.class.getName());
 			logger.log(Level.SEVERE, "The GUI-Icon couldn't be loaded.", e);
@@ -84,46 +84,46 @@ public class ProcessJasperFile extends JFrame {
 		 * >> GUI <<
 		 * Left
 		 */
-		hauptframe.add(new JScrollPane(textArea), "0,0,0,9");
+		mainframe.add(new JScrollPane(textArea), "0,0,0,9");
 		JButton processButton = new JButton(ProcessConstants.PROCESS);
-		hauptframe.add(processButton, "0,10,3,10");
+		mainframe.add(processButton, "0,10,3,10");
 		GuiHelper.enableDragAndDrop(textArea);
 
 
 		/*
 		 * Right
 		 */
-		hauptframe.add(new JLabel(ProcessConstants.LOAD_INSTRUCTIONS), "2,0,3,0");
+		mainframe.add(new JLabel(ProcessConstants.LOAD_INSTRUCTIONS), "2,0,3,0");
 
 		// Load file
-		hauptframe.add(fileNameLabel, "2,1,3,1");
+		mainframe.add(fileNameLabel, "2,1,3,1");
 		JButton openFileButton = new JButton(ProcessConstants.LOAD_FILE);
-		hauptframe.add(openFileButton, "2,2,3,2");
+		mainframe.add(openFileButton, "2,2,3,2");
 
 		// Checkboxes
-		hauptframe.add(chooseFileCheckbox, "2,3,3,3");
+		mainframe.add(chooseFileCheckbox, "2,3,3,3");
 		copyPasteCheckbox.setSelected(true);
-		hauptframe.add(copyPasteCheckbox, "2,4,3,4");
+		mainframe.add(copyPasteCheckbox, "2,4,3,4");
 		
 		// Heading for checkboxes
-		hauptframe.add(new JLabel(ProcessConstants.ACCESS_UNDERLINED), "2,6,2,6");
-		hauptframe.add(new JLabel(ProcessConstants.CONVENTIONS_UNDERLINED), "3,6,3,6");
+		mainframe.add(new JLabel(ProcessConstants.ACCESS_UNDERLINED), "2,6,2,6");
+		mainframe.add(new JLabel(ProcessConstants.CONVENTIONS_UNDERLINED), "3,6,3,6");
 
 		// Radio buttons private/protected
 		visibilityPrivate.setSelected(true);
 		ButtonGroup visibitilyGroup = new ButtonGroup();
 		visibitilyGroup.add(visibilityProtected);
 		visibitilyGroup.add(visibilityPrivate);
-		hauptframe.add(visibilityPrivate, "2,7,2,7");
-		hauptframe.add(visibilityProtected, "2,8,2,8");
+		mainframe.add(visibilityPrivate, "2,7,2,7");
+		mainframe.add(visibilityProtected, "2,8,2,8");
 		
 		// Radio buttons
 		conventionsJavaStatic.setSelected(true);
 		ButtonGroup conventionsGroup = new ButtonGroup();
 		conventionsGroup.add(conventionsJavaStatic);
 		conventionsGroup.add(conventionsJava);
-		hauptframe.add(conventionsJavaStatic, "3,7,3,7");
-		hauptframe.add(conventionsJava, "3,8,3,8");
+		mainframe.add(conventionsJavaStatic, "3,7,3,7");
+		mainframe.add(conventionsJava, "3,8,3,8");
 
 		// process
 		JRootPane rootPane = SwingUtilities.getRootPane(processButton);
@@ -158,9 +158,9 @@ public class ProcessJasperFile extends JFrame {
 		processButton.addActionListener(new ProcessListener());
 
 		// visible
-		hauptframe.setSize(720, 480);
-		hauptframe.setLocationRelativeTo(null);
-		hauptframe.setVisible(true);
+		mainframe.setSize(720, 480);
+		mainframe.setLocationRelativeTo(null);
+		mainframe.setVisible(true);
 	}
 
 	
